@@ -58,10 +58,10 @@
 
 <object>
 <param name="autostart" value="true">
-<param name="src" value="ClaudiaLewis.m4a">
+<param name="src" value="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif">
 <param name="autoplay" value="true">
 <param name="controller" value="false">
-<embed src="ClaudiaLewis.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+<embed src="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif" controller="false" autoplay="true" autostart="True" type="audio/wav" />
 </object>
 </body>
 
