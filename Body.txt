@@ -1,0 +1,116 @@
+
+
+<html>
+<head>
+<title> Dat body MCinn </title>
+
+
+
+<form name="Show">
+            <input type="text" name="MouseX" value="0" size="4"> X<br>
+            <input type="text" name="MouseY" value="0" size="4"> Y<br>
+      </form>
+
+
+        <script type="text/javascript">
+
+            var IE = document.all?true:false
+
+
+            if (!IE) document.captureEvents(Event.MOUSEMOVE)
+
+
+            document.onmousemove = getMouseXY;
+
+
+            var tempX = 0
+            var tempY = 0
+
+
+
+            function getMouseXY(e) {
+                if (IE) { 
+
+                tempX = event.clientX + document.body.scrollLeft
+                tempY = event.clientY + document.body.scrollTop
+                } 
+                else 
+                {  
+                 tempX = e.pageX
+                 tempY = e.pageY
+                }  
+
+
+                document.Show.MouseX.value = tempX
+                document.Show.MouseY.value = tempY
+
+                return true
+                }
+        </script>
+
+
+
+<body onload="mouse_position()">
+<form name="Form1">
+
+
+</form>
+
+<object>
+<param name="autostart" value="true">
+<param name="src" value="ClaudiaLewis.m4a">
+<param name="autoplay" value="true">
+<param name="controller" value="false">
+<embed src="ClaudiaLewis.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+</object>
+</body>
+
+<script>
+
+// Calculate the source-listener vector.
+vec3 sourceListener = source.position - listener.position;
+
+if (sourceListener.isZero()) {
+    // Handle degenerate case if source and listener are at the same point.
+    azimuth = 0;
+    elevation = 0;
+    return;
+}
+
+sourceListener.normalize();
+double dopplerShift = 1; // Initialize to default value
+double dopplerFactor = listener.dopplerFactor;
+
+if (dopplerFactor > 0) {
+    double speedOfSound = listener.speedOfSound;
+
+    // Don't bother if both source and listener have no velocity.
+    if (!source.velocity.isZero() || !listener.velocity.isZero()) {
+        // Calculate the source to listener vector.
+        vec3 sourceToListener = source.position - listener.position;
+
+        double sourceListenerMagnitude = sourceToListener.length();
+
+        double listenerProjection = sourceToListener.dot(listener.velocity) / sourceListenerMagnitude;
+        double sourceProjection = sourceToListener.dot(source.velocity) / sourceListenerMagnitude;
+
+        listenerProjection = -listenerProjection;
+        sourceProjection = -sourceProjection;
+
+        double scaledSpeedOfSound = speedOfSound / dopplerFactor;
+        listenerProjection = min(listenerProjection, scaledSpeedOfSound);
+        sourceProjection = min(sourceProjection, scaledSpeedOfSound);
+
+        dopplerShift = ((speedOfSound - dopplerFactor * listenerProjection) / (speedOfSound - dopplerFactor * sourceProjection));
+        fixNANs(dopplerShift); // Avoid illegal values
+
+        // Limit the pitch shifting to 4 octaves up and 3 octaves down.
+        dopplerShift = min(dopplerShift, 16);
+        dopplerShift = max(dopplerShift, 0.125);
+    }
+}
+</script>
+
+</head>
+
+</html>
