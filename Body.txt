@@ -58,58 +58,12 @@
 
 <object>
 <param name="autostart" value="true">
-<param name="src" value="ClaudiaLewis.m4a">
+<param name="src" value="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif">
 <param name="autoplay" value="true">
 <param name="controller" value="false">
-<embed src="ClaudiaLewis.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+<embed src="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif" controller="false" autoplay="true" autostart="True" type="audio/wav" />
 </object>
 </body>
-
-<script>
-
-// Calculate the source-listener vector.
-vec3 sourceListener = source.position - listener.position;
-
-if (sourceListener.isZero()) {
-    // Handle degenerate case if source and listener are at the same point.
-    azimuth = 0;
-    elevation = 0;
-    return;
-}
-
-sourceListener.normalize();
-double dopplerShift = 1; // Initialize to default value
-double dopplerFactor = listener.dopplerFactor;
-
-if (dopplerFactor > 0) {
-    double speedOfSound = listener.speedOfSound;
-
-    // Don't bother if both source and listener have no velocity.
-    if (!source.velocity.isZero() || !listener.velocity.isZero()) {
-        // Calculate the source to listener vector.
-        vec3 sourceToListener = source.position - listener.position;
-
-        double sourceListenerMagnitude = sourceToListener.length();
-
-        double listenerProjection = sourceToListener.dot(listener.velocity) / sourceListenerMagnitude;
-        double sourceProjection = sourceToListener.dot(source.velocity) / sourceListenerMagnitude;
-
-        listenerProjection = -listenerProjection;
-        sourceProjection = -sourceProjection;
-
-        double scaledSpeedOfSound = speedOfSound / dopplerFactor;
-        listenerProjection = min(listenerProjection, scaledSpeedOfSound);
-        sourceProjection = min(sourceProjection, scaledSpeedOfSound);
-
-        dopplerShift = ((speedOfSound - dopplerFactor * listenerProjection) / (speedOfSound - dopplerFactor * sourceProjection));
-        fixNANs(dopplerShift); // Avoid illegal values
-
-        // Limit the pitch shifting to 4 octaves up and 3 octaves down.
-        dopplerShift = min(dopplerShift, 16);
-        dopplerShift = max(dopplerShift, 0.125);
-    }
-}
-</script>
 
 </head>
 
