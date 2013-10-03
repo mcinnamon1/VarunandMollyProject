@@ -31,12 +31,12 @@
             function getMouseXY(e) {
                 if (IE) { 
 
-                tempX = event.clientX + document.body.scrollLeft
+                tempX = event.clientX + document.body.scrollLeft 
                 tempY = event.clientY + document.body.scrollTop
                 } 
                 else 
                 {  
-                 tempX = e.pageX
+                 tempX = e.pageX				      
                  tempY = e.pageY
                 }  
 
