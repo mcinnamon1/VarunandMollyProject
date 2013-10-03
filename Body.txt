@@ -56,14 +56,38 @@
 
 </form>
 
+<!--
 <object>
 <param name="autostart" value="true">
-<param name="src" value="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif">
+<param name="src" value="blerp.m4a">
 <param name="autoplay" value="true">
 <param name="controller" value="false">
-<embed src="http://sampleswap.org/SAMPLESWAP/MELODIC%20SAMPLES%20and%20LOOPS/GUITARS%20BPM/070_fukdup_wah_guitar.aif" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+<embed src="blerp.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
 </object>
 </body>
+-->
+
+<script>
+ myAudio = new Audio('blerp.m4a'); 
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+myAudio.play(); 
+// Create the filter
+
+/*
+var filter = context.createBiquadFilter();
+// Create the audio graph.
+source.connect(filter);
+filter.connect('blerp.m4a');
+// Create and specify parameters for the low-pass filter.
+filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
+filter.frequency.value = 440; // Set cutoff to 440 HZ
+// Playback the sound.
+source.start(0);
+*/
+</script>
 
 </head>
 
