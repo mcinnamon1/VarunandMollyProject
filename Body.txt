@@ -68,25 +68,54 @@
 -->
 
 <script>
+/*
  myAudio = new Audio('blerp.m4a'); 
 myAudio.addEventListener('ended', function() {
-    this.currentTime = 0;
+    this.currentTime = .02;
     this.play();
 }, false);
 myAudio.play(); 
 // Create the filter
+*/
 
 /*
+var context = new AudioContext();
 var filter = context.createBiquadFilter();
+var source = context.createBufferSource();
+source.buffer = buffer;
 // Create the audio graph.
 source.connect(filter);
 filter.connect('blerp.m4a');
 // Create and specify parameters for the low-pass filter.
 filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
-filter.frequency.value = 440; // Set cutoff to 440 HZ
+//filter.frequency.value = 440; // Set cutoff to 440 HZ
 // Playback the sound.
 source.start(0);
 */
+var context;
+window.addEventListener('load', init, false);
+function init() {
+  try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+
+
+function playSound(buffer) {
+  var source = context.createBufferSource(); // creates a sound source
+  source.buffer = buffer;                    // tell the source which sound to play
+  source.connect('blerp.m4a');       // connect the source to the context's destination (the speakers)
+  source.start(0);                           // play the source now
+                                             // note: on older systems, may have to use deprecated noteOn(time);
+}
+
+playSound();
+
 </script>
 
 </head>
