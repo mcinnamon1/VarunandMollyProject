@@ -11,18 +11,22 @@
             <input type="text" name="MouseY" value="0" size="4"> Y<br>
             <input type = "text" name = Width" value = "0" size = "5"> PageWidth <br>
             <input type = "text" name = Height" value = "0" size = "5"> PageHeight <br>
-      </form>
+</form>
 
 
-        <script type="text/javascript">
 
+		<script type = "text/javascript"
+		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+		
+			
+		
             var IE = document.all?true:false
 
 
             if (!IE) document.captureEvents(Event.MOUSEMOVE)
-			document.onmousemove = getMouseXY;
+			document.onmousemove = changeColor;
 
-
+		
 			
 
             var tempX = 0
@@ -30,20 +34,31 @@
 
 
 
-			function ShowWidth()
-			{
-				tempWidth = document.body.offsetWidth
-				tempHeight = document.body.offsetHeight
-				
-				
-				document.Show.Width.value = tempWidth
-				document.Show.Height.value = tempHeight
-				
-				
-				return true
-			}
+			
 
 
+        function changeColor(e)
+        {
+        	if (IE) 
+        	{ 
+
+                tempX = event.clientX + document.body.scrollLeft 
+                tempY = event.clientY + document.body.scrollTop
+                } 
+                else 
+                {  
+                 tempX = e.pageX				      
+                 tempY = e.pageY
+            }  
+        	
+        	var tempRoll = tempX/1400;
+        	var tempRollY = tempY/800;
+        	
+        	$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	
+        }
+
+			
             function getMouseXY(e) 
             {
                 if (IE) { 
@@ -62,7 +77,9 @@
                 document.Show.MouseY.value = tempY
 
                 return true
-            }
+        	}
+        	
+        	
                 
             
                 
@@ -112,7 +129,7 @@ source.start(0);
 </head>
 
 
-<body>
+<body style = "background-color: rgb(>
 
 <script type="text/javascript">
 	ShowWidth();
