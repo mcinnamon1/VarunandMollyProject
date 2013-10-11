@@ -68,15 +68,17 @@
 -->
 
 <script>
-/*
- myAudio = new Audio('blerp.m4a'); 
+
+myAudio = new Audio('Blerp.m4a'); 
 myAudio.addEventListener('ended', function() {
-    this.currentTime = .02;
+    this.currentTime = 0;
     this.play();
 }, false);
+
+var souce = 
 myAudio.play(); 
 // Create the filter
-*/
+
 
 /*
 var context = new AudioContext();
@@ -91,7 +93,7 @@ filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
 //filter.frequency.value = 440; // Set cutoff to 440 HZ
 // Playback the sound.
 source.start(0);
-*/
+
 var context;
 window.addEventListener('load', init, false);
 function init() {
@@ -115,6 +117,8 @@ function playSound(buffer) {
 }
 
 playSound();
+
+*/
 
 </script>
 
