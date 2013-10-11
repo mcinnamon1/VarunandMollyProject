@@ -9,6 +9,8 @@
 <form name="Show">
             <input type="text" name="MouseX" value="0" size="4"> X<br>
             <input type="text" name="MouseY" value="0" size="4"> Y<br>
+            <input type = "text" name = Width" value = "0" size = "5"> PageWidth <br>
+            <input type = "text" name = Height" value = "0" size = "5"> PageHeight <br>
       </form>
 
 
@@ -18,25 +20,40 @@
 
 
             if (!IE) document.captureEvents(Event.MOUSEMOVE)
+			document.onmousemove = getMouseXY;
 
 
-            document.onmousemove = getMouseXY;
-
+			
 
             var tempX = 0
             var tempY = 0
 
 
 
-            function getMouseXY(e) {
+			function ShowWidth()
+			{
+				tempWidth = document.body.offsetWidth
+				tempHeight = document.body.offsetHeight
+				
+				
+				document.Show.Width.value = tempWidth
+				document.Show.Height.value = tempHeight
+				
+				
+				return true
+			}
+
+
+            function getMouseXY(e) 
+            {
                 if (IE) { 
 
-                tempX = event.clientX + document.body.scrollLeft
+                tempX = event.clientX + document.body.scrollLeft 
                 tempY = event.clientY + document.body.scrollTop
                 } 
                 else 
                 {  
-                 tempX = e.pageX
+                 tempX = e.pageX				      
                  tempY = e.pageY
                 }  
 
@@ -45,7 +62,10 @@
                 document.Show.MouseY.value = tempY
 
                 return true
-                }
+            }
+                
+            
+                
         </script>
 
 
@@ -68,8 +88,12 @@
 -->
 
 <script>
+<<<<<<< HEAD:Body.txt
 
 myAudio = new Audio('Blerp.m4a'); 
+=======
+ myAudio = new Audio('blerp.m4a'); 
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
@@ -78,21 +102,22 @@ myAudio.addEventListener('ended', function() {
 var souce = 
 myAudio.play(); 
 // Create the filter
+<<<<<<< HEAD:Body.txt
 
+=======
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 
 /*
-var context = new AudioContext();
 var filter = context.createBiquadFilter();
-var source = context.createBufferSource();
-source.buffer = buffer;
 // Create the audio graph.
 source.connect(filter);
 filter.connect('blerp.m4a');
 // Create and specify parameters for the low-pass filter.
 filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
-//filter.frequency.value = 440; // Set cutoff to 440 HZ
+filter.frequency.value = 440; // Set cutoff to 440 HZ
 // Playback the sound.
 source.start(0);
+<<<<<<< HEAD:Body.txt
 
 var context;
 window.addEventListener('load', init, false);
@@ -120,8 +145,22 @@ playSound();
 
 */
 
+=======
+*/
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 </script>
 
 </head>
+
+
+<body>
+
+<script type="text/javascript">
+	ShowWidth();
+</script>
+
+
+
+</body>
 
 </html>
