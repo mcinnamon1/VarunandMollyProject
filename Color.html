@@ -16,26 +16,23 @@
 
 
 		<script type = "text/javascript"
-		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+		src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		
+		<script type="text/javascript">
 			
 		
             var IE = document.all?true:false
 
 
             if (!IE) document.captureEvents(Event.MOUSEMOVE)
-			document.onmousemove = changeColor;
+            document.onmousemove = changeColor;
+			
 
 		
 			
 
             var tempX = 0
             var tempY = 0
-
-
-
-			
-
 
         function changeColor(e)
         {
@@ -44,9 +41,9 @@
 
                 tempX = event.clientX + document.body.scrollLeft 
                 tempY = event.clientY + document.body.scrollTop
-                } 
-                else 
-                {  
+            } 
+            else 
+        	{  
                  tempX = e.pageX				      
                  tempY = e.pageY
             }  
@@ -54,7 +51,9 @@
         	var tempRoll = tempX/1400;
         	var tempRollY = tempY/800;
         	
-        	$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	
+        	$("body").css("background-color: ", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	
         	
         }
 
@@ -87,53 +86,48 @@
 
 
 
+<!--
 <body onload="mouse_position()">
+-->
 <form name="Form1">
 
 
 </form>
 
-<!--
-<object>
-<param name="autostart" value="true">
-<param name="src" value="blerp.m4a">
-<param name="autoplay" value="true">
-<param name="controller" value="false">
-<embed src="blerp.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
-</object>
-</body>
--->
 
 <script>
  myAudio = new Audio('blerp.m4a'); 
-myAudio.addEventListener('ended', function() {
+myAudio.addEventListener('ended', function() 
+{
     this.currentTime = 0;
     this.play();
 }, false);
 myAudio.play(); 
-// Create the filter
 
-/*
-var filter = context.createBiquadFilter();
-// Create the audio graph.
-source.connect(filter);
-filter.connect('blerp.m4a');
-// Create and specify parameters for the low-pass filter.
-filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
-filter.frequency.value = 440; // Set cutoff to 440 HZ
-// Playback the sound.
-source.start(0);
-*/
 </script>
-
 </head>
 
 
-<body style = "background-color: rgb(>
+<body>
 
 <script type="text/javascript">
-	ShowWidth();
+	
+	
+	//NEED TO CONVERT FROM RBG TO HEX
+	/*
+	n = parseInt(n,10);
+ 	if (isNaN(n)) return "00";
+ 	n = Math.max(0,Math.min(n,255));
+ 	return "0123456789ABCDEF".charAt((n-n%16)/16)
+      + "0123456789ABCDEF".charAt(n%16);
+      */
+      
+      
+      ik
+		document.body.style.backgroundColor = "rgb(66,66,50)"
+	
 </script>
+
 
 
 
