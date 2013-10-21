@@ -24,8 +24,13 @@
             var IE = document.all?true:false
 
 
-            if (!IE) document.captureEvents(Event.MOUSEMOVE)
-            document.onmousemove = changeColor;
+            document.captureEvents(Event.MOUSEMOVE)
+            
+            	//document.onmousemove = changeColor;
+            	document.onmousemove = getMouseXY;
+            
+            
+            
 			
 
 		
@@ -36,6 +41,9 @@
 
         function changeColor(e)
         {
+
+		document.write ("hhaha");
+
         	if (IE) 
         	{ 
 
@@ -48,13 +56,24 @@
                  tempY = e.pageY
             }  
         	
-        	var tempRoll = tempX/1400;
-        	var tempRollY = tempY/800;
+        	var tempRoll = (tempX/1400) * 255
+        	var tempRollY = (tempY/800) * 255
+        	
+        	document.write (tempRoll);
+        	
+        	//return true
+        	
+        	//$("body").css("background-color: ", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+
+        	
+        	//document.body.style.backgroundColor = "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRollY + ")";
+
+        	document.write ("hhaha");
+
+
         	
         	
-        	$("body").css("background-color: ", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
-        	
-        	
+        	return true
         }
 
 			
@@ -74,6 +93,17 @@
 
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
+
+		if ((tempX/1400.0)> 0.5)
+		{
+			document.body.style.backgroundColor = ("rgb(" + Math.round((tempX/1400.0) * 255)  + "," + Math.round((tempY/1400.0) * 255) + "," + Math.round((tempX/1400.0) * 255) + ")");
+			//document.body.style.backgroundColor = "rgb(0,222,250)";
+			
+		}
+		else
+		{
+			document.body.style.backgroundColor = "rgb(200,0,250)";
+		}
 
                 return true
         	}
@@ -123,8 +153,8 @@ myAudio.play();
       */
       
       
-      ik
-		document.body.style.backgroundColor = "rgb(66,66,50)"
+      
+		//<document.body.style.backgroundColor = "rgb(200,12,0)";>
 	
 </script>
 
