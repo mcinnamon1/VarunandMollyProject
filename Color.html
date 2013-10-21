@@ -20,7 +20,7 @@
 		 	var IE = document.all?true:false
 		 	
 		 	
-		 	
+		 
 		
 			var baseColors = new Array();
 			//red:
@@ -40,10 +40,12 @@
 			
 			
 			
+			
             var pageWidth = document.width;
   			var pageHeight = document.height;
   			
   			//create array of values on page corresponding to colors
+  			
   			
   			var widthSegment = pageWidth/8;
   			var xAxisColors = new Array();
@@ -64,9 +66,10 @@
   			yAxisColors[4] = heightSegment*5;
   			yAxisColors[5] = heightSegment*6;
   			yAxisColors[6] = heightSegment*7;
+  			
 
 
-            if (!IE) document.captureEvents(Event.MOUSEMOVE)
+            document.captureEvents(Event.MOUSEMOVE)
 			document.onmousemove = getMouseXY;
 
 		
@@ -79,7 +82,7 @@
 
 			
 
-/*
+
         function changeColor(e)
         {
         	if (IE) 
@@ -94,13 +97,24 @@
                  tempY = e.pageY
             }  
         	
-        	var tempRoll = tempX/1400;
-        	var tempRollY = tempY/800;
+        	//var tempRoll = tempX/1400;
+        	//var tempRollY = tempY/800;
         	
-        	$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	//$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
         	
-        } */
+        } 
         
+        function Color(r, g, b)
+        	{
+        		this.Red = r;
+        		this.Green = g;
+        		this.Blue = b;
+        		
+        	
+        	}
+
+        
+        /*
         function ShowWidth()
 			{
 				tempWidth = document.body.offsetWidth
@@ -113,6 +127,7 @@
 				
 				return true
 			}
+			*/
 
 			
             function getMouseXY(e) 
@@ -124,68 +139,89 @@
                 } 
                 else 
                 {  
-                 tempX = e.pageX				      
+                 tempX = e.pageX      
                  tempY = e.pageY
                 }  
 
 
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
+                
+                
+                
+                
+//if ((partX <= 0))// || (partY <= 0))
+{
+//document.body.style.backgroundColor = "rgb(0,0,0)";
+}
+//else
+{
+document.body.style.backgroundColor = ("rgb(" + Math.round(((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2) * 255)  + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + (document.Show.MouseY.value/GetHeight()))/2)) * 255) + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2)) * 255) + ")");
+ 
+}
+ 
+//document.body.style.backgroundColor = "rgb(0,222,250)";
+ 
+ 
+ 
 
                 return true
-        	}
-        	
-        	
-        	function Color(r, g, b)
-        	{
-        		this.Red = r;
-        		this.Green = g;
-        		this.Blue = b;
-        		
-        	
-        	}
-        	/*
-        	function averageColor(Color color1, Color color2)
-        		{
-        			var newRed = ((color1.Red + color2.Red)/2);
-        			var newGreen = ((color1.Green + color2.Green)/2);
-        			var newBlue = ((color1.Blue + color2.Blue)/2);
-        			var newColor = Color(newRed, newGreen, newBlue);        		
-        			return newColor;
-        		}
-        		
-        	*/
-        	
-        	
-        
-                
-        </script>
+        }
+       
+       
+        function GetHeight()
+  {
+          var y = 0;
+          if (self.innerHeight)
+          {
+                  y = self.innerHeight;
+          }
+          else if (document.documentElement && document.documentElement.clientHeight)
+          {
+                  y = document.documentElement.clientHeight;
+          }
+          else if (document.body)
+          {
+                  y = document.body.clientHeight;
+          }
+          
+          
+          
+          return y;
+  }
+       
+        function getWidth() 
+        {
+       
+    if (self.innerWidth) 
+    {
+        return self.innerWidth;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientHeight)
+    {
+        return document.documentElement.clientWidth;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientWidth;
+    }
+   
+   
+   
+    return -1;
+}
 
 
 
-<body onload="mouse_position()">
-<form name="Form1">
-
-
-</form>
 </script>
-
 </head>
 
-<!--
-<body style = "background-color: rgb(>
-
- <script type="text/javascript">
-	ShowWidth();
+<body>
 
 
--->
-
-<script>
-   var X = document.width;
-   var Y = document.height;
-   document.write("This document window is "+X+"x"+Y+" pixels.");
-</script>
 </body>
+
 
 </html>
