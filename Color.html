@@ -93,20 +93,74 @@
 
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
-
-		if ((tempX/1400.0)> 0.5)
-		{
-			document.body.style.backgroundColor = ("rgb(" + Math.round((tempX/1400.0) * 255)  + "," + Math.round((tempY/1400.0) * 255) + "," + Math.round((tempX/1400.0) * 255) + ")");
+                
+                //document.Show.MouseX.value/(getWidth())
+                //document.Show.MouseY.value/GetHeight()
+                //var partY = tempY/GetHeight()
+                
+                
+				//if ((partX <= 0))// || (partY <= 0))
+				{
+					//document.body.style.backgroundColor = "rgb(0,0,0)";
+				}
+				//else
+				{
+					document.body.style.backgroundColor = ("rgb(" + Math.round(((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2) * 255)  + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + (document.Show.MouseY.value/GetHeight()))/2)) * 255) + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2)) * 255) + ")");
+			
+				}
+		
 			//document.body.style.backgroundColor = "rgb(0,222,250)";
 			
-		}
-		else
-		{
-			document.body.style.backgroundColor = "rgb(200,0,250)";
-		}
+		
+		
 
                 return true
         	}
+        	
+        	
+        	function GetHeight()
+  		{
+          var y = 0;
+          if (self.innerHeight)
+          {
+                  y = self.innerHeight;
+          }
+          else if (document.documentElement && document.documentElement.clientHeight)
+          {
+                  y = document.documentElement.clientHeight;
+          }
+          else if (document.body)
+          {
+                  y = document.body.clientHeight;
+          }
+          
+          
+          
+          return y;
+  		}
+        	
+        	function getWidth() 
+        	{
+        	
+    		if (self.innerWidth) 
+    		{
+       			return self.innerWidth;
+    		}
+    			
+    		else if (document.documentElement && document.documentElement.clientHeight)
+    		{
+        		return document.documentElement.clientWidth;
+    		}
+    		
+    		else if (document.body) 
+    		{
+        		return document.body.clientWidth;
+    		}
+    		
+    		
+    		
+    		return -1;
+			}
         	
         	
                 
