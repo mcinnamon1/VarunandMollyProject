@@ -13,6 +13,7 @@
             <input type = "text" name = "Height" value = "0" size = "5"> PageHeight <br>
 </form>
 
+<<<<<<< HEAD
 <!--<script type = "text/javascript"
 		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
 		
@@ -21,6 +22,15 @@
 		 	
 		 	
 		 	
+=======
+
+
+		<script type = "text/javascript"
+		src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+			
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
 		
 			var baseColors = new Array();
 			//red:
@@ -67,7 +77,12 @@
 
 
             if (!IE) document.captureEvents(Event.MOUSEMOVE)
+<<<<<<< HEAD
 			document.onmousemove = getMouseXY;
+=======
+            document.onmousemove = changeColor;
+			
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
 
 		
 			
@@ -75,11 +90,14 @@
             var tempX = 0
             var tempY = 0
 
+<<<<<<< HEAD
 
 
 			
 
 /*
+=======
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
         function changeColor(e)
         {
         	if (IE) 
@@ -87,9 +105,9 @@
 
                 tempX = event.clientX + document.body.scrollLeft 
                 tempY = event.clientY + document.body.scrollTop
-                } 
-                else 
-                {  
+            } 
+            else 
+        	{  
                  tempX = e.pageX				      
                  tempY = e.pageY
             }  
@@ -97,7 +115,9 @@
         	var tempRoll = tempX/1400;
         	var tempRollY = tempY/800;
         	
-        	$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	
+        	$("body").css("background-color: ", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	
         	
         } */
         
@@ -163,29 +183,72 @@
 
 
 
+<!--
 <body onload="mouse_position()">
+-->
 <form name="Form1">
 
 
 </form>
+<<<<<<< HEAD
 </script>
+=======
 
+
+<script>
+ myAudio = new Audio('blerp.m4a'); 
+myAudio.addEventListener('ended', function() 
+{
+    this.currentTime = 0;
+    this.play();
+}, false);
+myAudio.play(); 
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
+
+</script>
 </head>
 
+<<<<<<< HEAD
 <!--
 <body style = "background-color: rgb(>
 
  <script type="text/javascript">
 	ShowWidth();
+=======
+
+<body>
+
+<script type="text/javascript">
+	
+	
+	//NEED TO CONVERT FROM RBG TO HEX
+	/*
+	n = parseInt(n,10);
+ 	if (isNaN(n)) return "00";
+ 	n = Math.max(0,Math.min(n,255));
+ 	return "0123456789ABCDEF".charAt((n-n%16)/16)
+      + "0123456789ABCDEF".charAt(n%16);
+      */
+      
+      
+      ik
+		document.body.style.backgroundColor = "rgb(66,66,50)"
+	
+</script>
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
 
 
 -->
 
+<<<<<<< HEAD
 <script>
    var X = document.width;
    var Y = document.height;
    document.write("This document window is "+X+"x"+Y+" pixels.");
 </script>
+=======
+
+>>>>>>> d3871abe677a67741bae2e1bf3705ee295b13cf4
 </body>
 
 </html>
