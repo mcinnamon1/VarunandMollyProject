@@ -88,13 +88,24 @@
 -->
 
 <script>
+<<<<<<< HEAD:Body.txt
+
+myAudio = new Audio('Blerp.m4a'); 
+=======
  myAudio = new Audio('blerp.m4a'); 
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
 }, false);
+
+var souce = 
 myAudio.play(); 
 // Create the filter
+<<<<<<< HEAD:Body.txt
+
+=======
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 
 /*
 var filter = context.createBiquadFilter();
@@ -106,7 +117,37 @@ filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
 filter.frequency.value = 440; // Set cutoff to 440 HZ
 // Playback the sound.
 source.start(0);
+<<<<<<< HEAD:Body.txt
+
+var context;
+window.addEventListener('load', init, false);
+function init() {
+  try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+
+
+function playSound(buffer) {
+  var source = context.createBufferSource(); // creates a sound source
+  source.buffer = buffer;                    // tell the source which sound to play
+  source.connect('blerp.m4a');       // connect the source to the context's destination (the speakers)
+  source.start(0);                           // play the source now
+                                             // note: on older systems, may have to use deprecated noteOn(time);
+}
+
+playSound();
+
 */
+
+=======
+*/
+>>>>>>> cb1028e1d14af779e830533c9c33e24972e26414:Body.html
 </script>
 
 </head>
