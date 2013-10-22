@@ -18,8 +18,6 @@
 		
 		<script>
 		 	var IE = document.all?true:false
-		 	
-		 	
 		 
 		
 			var baseColors = new Array();
@@ -112,6 +110,19 @@
         		
         	
         	}
+        	
+        	/*
+        	function averageColorUnit(Color color1, Color color2)
+        		{
+        			var newRed = ((color1.Red + color2.Red)/2);
+        			var newGreen = ((color1.Green + color2.Green)/2);
+        			var newBlue = ((color1.Blue + color2.Blue)/2);
+        			var newColor = Color(newRed, newGreen, newBlue);        		
+        			return newColor;
+        		}
+        		
+        	*/
+
 
         
         /*
@@ -147,23 +158,26 @@
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
                 
+                var r, g, b;
+                /*
+                var mousePointX = document.Show.MouseX.value / widthSegment
+                var mousePointY = document.Show.MouseY.value / pageHeight
+                */
                 
+                if (MouseX.Value <= xAxisColors[0] && MouseY.Value <= yAxisColors[0])     
+                {
                 
+                	
+                	r = 255;
+					g = 
+					b = 0;
+					
                 
-//if ((partX <= 0))// || (partY <= 0))
-{
-//document.body.style.backgroundColor = "rgb(0,0,0)";
-}
-//else
-{
-document.body.style.backgroundColor = ("rgb(" + Math.round(((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2) * 255)  + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + (document.Show.MouseY.value/GetHeight()))/2)) * 255) + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2)) * 255) + ")");
+                }
+                           
+					document.body.style.backgroundColor = ("rgb(" + Math.round(((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2) * 255)  + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + (document.Show.MouseY.value/GetHeight()))/2)) * 255) + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2)) * 255) + ")");
  
-}
- 
-//document.body.style.backgroundColor = "rgb(0,222,250)";
- 
- 
- 
+ //document.body.style.backgroundColor = "rgb(0,222,250)";
 
                 return true
         }
