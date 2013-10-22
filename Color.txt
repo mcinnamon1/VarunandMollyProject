@@ -94,9 +94,7 @@
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
                 
-                //document.Show.MouseX.value/(getWidth())
-                //document.Show.MouseY.value/GetHeight()
-                //var partY = tempY/GetHeight()
+                
                 
                 
 				//if ((partX <= 0))// || (partY <= 0))
