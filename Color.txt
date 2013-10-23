@@ -9,29 +9,66 @@
 <form name="Show">
             <input type="text" name="MouseX" value="0" size="4"> X<br>
             <input type="text" name="MouseY" value="0" size="4"> Y<br>
-            <input type = "text" name = Width" value = "0" size = "5"> PageWidth <br>
-            <input type = "text" name = Height" value = "0" size = "5"> PageHeight <br>
+            <input type = "text" name = "Width" value = "0" size = "5"> PageWidth <br>
+            <input type = "text" name = "Height" value = "0" size = "5"> PageHeight <br>
 </form>
 
-
-
-		<script type = "text/javascript"
-		src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--<script type = "text/javascript"
+		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
 		
-		<script type="text/javascript">
+		<script>
+		 	var IE = document.all?true:false
+		 
+		
+			var baseColors = new Array();
+			//red:
+			baseColors[0] = new Color(255, 0, 0);
+			//orange:
+			baseColors[1] = new Color(255, 128, 0);
+			//yellow:
+			baseColors[2] = new Color(255, 255, 0);
+			//green:
+			baseColors[3] = new Color(0, 255, 0);
+			//blue:
+			baseColors[4] = new Color(0, 0, 255);
+			//indigo:
+			baseColors[5] = new Color(0, 128, 255);
+			//violet:
+			baseColors[6] = new Color(128, 0, 255);
 			
-		
-            var IE = document.all?true:false
+			
+			
+			
+            var pageWidth = document.width;
+  			var pageHeight = document.height;
+  			
+  			//create array of values on page corresponding to colors
+  			
+  			
+  			var widthSegment = pageWidth/8;
+  			var xAxisColors = new Array();
+  			xAxisColors[0] = widthSegment;
+  			xAxisColors[1] = widthSegment*2;
+  			xAxisColors[2] = widthSegment*3;
+  			xAxisColors[3] = widthSegment*4;
+  			xAxisColors[4] = widthSegment*5;
+  			xAxisColors[5] = widthSegment*6;
+  			xAxisColors[6] = widthSegment*7;
+  			
+  			var heightSegment = pageHeight/8;
+  			var yAxisColors = new Array();
+  			yAxisColors[0] = heightSegment;
+  			yAxisColors[1] = heightSegment*2;
+  			yAxisColors[2] = heightSegment*3;
+  			yAxisColors[3] = heightSegment*4;
+  			yAxisColors[4] = heightSegment*5;
+  			yAxisColors[5] = heightSegment*6;
+  			yAxisColors[6] = heightSegment*7;
+  			
 
 
             document.captureEvents(Event.MOUSEMOVE)
-            
-            	//document.onmousemove = changeColor;
-            	document.onmousemove = getMouseXY;
-            
-            
-            
-			
+			document.onmousemove = getMouseXY;
 
 		
 			
@@ -39,42 +76,69 @@
             var tempX = 0
             var tempY = 0
 
+
+
+			
+
+
         function changeColor(e)
         {
-
-		document.write ("hhaha");
-
         	if (IE) 
         	{ 
 
                 tempX = event.clientX + document.body.scrollLeft 
                 tempY = event.clientY + document.body.scrollTop
-            } 
-            else 
-        	{  
+                } 
+                else 
+                {  
                  tempX = e.pageX				      
                  tempY = e.pageY
             }  
         	
-        	var tempRoll = (tempX/1400) * 255
-        	var tempRollY = (tempY/800) * 255
+        	//var tempRoll = tempX/1400;
+        	//var tempRollY = tempY/800;
         	
-        	document.write (tempRoll);
+        	//$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
         	
-        	//return true
+        } 
+        
+        function Color(r, g, b)
+        	{
+        		this.Red = r;
+        		this.Green = g;
+        		this.Blue = b;
+        		
         	
-        	//$("body").css("background-color: ", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
+        	}
+        	
+        	/*
+        	function averageColorUnit(Color color1, Color color2)
+        		{
+        			var newRed = ((color1.Red + color2.Red)/2);
+        			var newGreen = ((color1.Green + color2.Green)/2);
+        			var newBlue = ((color1.Blue + color2.Blue)/2);
+        			var newColor = Color(newRed, newGreen, newBlue);        		
+        			return newColor;
+        		}
+        		
+        	*/
 
-        	
-        	//document.body.style.backgroundColor = "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRollY + ")";
 
-        	document.write ("hhaha");
-
-
-        	
-        	
-        	return true
-        }
+        
+        /*
+        function ShowWidth()
+			{
+				tempWidth = document.body.offsetWidth
+				tempHeight = document.body.offsetHeight
+				
+				
+				document.Show.Width.value = tempWidth
+				document.Show.Height.value = tempHeight
+				
+				
+				return true
+			}
+			*/
 
 			
             function getMouseXY(e) 
@@ -86,7 +150,7 @@
                 } 
                 else 
                 {  
-                 tempX = e.pageX				      
+                 tempX = e.pageX      
                  tempY = e.pageY
                 }  
 
@@ -94,30 +158,37 @@
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
                 
+                var r, g, b;
+                
+                var mousePointX = document.Show.MouseX.value / widthSegment
+                var mousePointY = document.Show.MouseY.value / pageHeight
                 
                 
-                
-				//if ((partX <= 0))// || (partY <= 0))
-				{
-					//document.body.style.backgroundColor = "rgb(0,0,0)";
-				}
-				//else
-				{
+                if (MouseX.Value <= xAxisColors[0] && MouseY.Value <= yAxisColors[0])     
+                {
+                	
+                	g = 
+                	r = 255;
+			
+			b = 0;
+					
+                	
+                }
+                           
+
+		document.body.style.backgroundColor = ("rgb(" + r  + "," + g + "," + b + ")");
+		/*
 					document.body.style.backgroundColor = ("rgb(" + Math.round(((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2) * 255)  + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + (document.Show.MouseY.value/GetHeight()))/2)) * 255) + "," + Math.round((((document.Show.MouseX.value/(getWidth()) + document.Show.MouseY.value/GetHeight()) /2)) * 255) + ")");
-			
-				}
-		
-			//document.body.style.backgroundColor = "rgb(0,222,250)";
-			
-		
-		
+*/
+ 
+ //document.body.style.backgroundColor = "rgb(0,222,250)";
 
                 return true
-        	}
-        	
-        	
-        	function GetHeight()
-  		{
+        }
+       
+       
+        function GetHeight()
+  {
           var y = 0;
           if (self.innerHeight)
           {
@@ -135,84 +206,40 @@
           
           
           return y;
-  		}
-        	
-        	function getWidth() 
-        	{
-        	
-    		if (self.innerWidth) 
-    		{
-       			return self.innerWidth;
-    		}
-    			
-    		else if (document.documentElement && document.documentElement.clientHeight)
-    		{
-        		return document.documentElement.clientWidth;
-    		}
-    		
-    		else if (document.body) 
-    		{
-        		return document.body.clientWidth;
-    		}
-    		
-    		
-    		
-    		return -1;
-			}
-        	
-        	
-                
-            
-                
-        </script>
+  }
+       
+        function getWidth() 
+        {
+       
+    if (self.innerWidth) 
+    {
+        return self.innerWidth;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientHeight)
+    {
+        return document.documentElement.clientWidth;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientWidth;
+    }
+   
+   
+   
+    return -1;
+}
 
 
-
-<!--
-<body onload="mouse_position()">
--->
-<form name="Form1">
-
-
-</form>
-
-
-<script>
- myAudio = new Audio('blerp.m4a'); 
-myAudio.addEventListener('ended', function() 
-{
-    this.currentTime = 0;
-    this.play();
-}, false);
-myAudio.play(); 
 
 </script>
 </head>
 
-
 <body>
-
-<script type="text/javascript">
-	
-	
-	//NEED TO CONVERT FROM RBG TO HEX
-	/*
-	n = parseInt(n,10);
- 	if (isNaN(n)) return "00";
- 	n = Math.max(0,Math.min(n,255));
- 	return "0123456789ABCDEF".charAt((n-n%16)/16)
-      + "0123456789ABCDEF".charAt(n%16);
-      */
-      
-      
-      
-		//<document.body.style.backgroundColor = "rgb(200,12,0)";>
-	
-</script>
-
-
 
 
 </body>
+
 
 </html>
