@@ -113,20 +113,20 @@
                 var distPart = (((document.Show.MouseX.value / (getWidth()/8)))) * 255
                 
                    
-                if (document.Show.MouseX.value <= (getWidth()/8))
+                if (document.Show.MouseX.value <= (getWidth()/8)) //red to orange
                 {
                 	
                 	g = Math.round((document.Show.MouseX.value / (getWidth()/8)) * 128)
                 	
                 	
-                	//(((document.Show.MouseX.value / (getWidth()/8)))%1.0) * 255;
+                	
                 	r = 255
 					
 					b = 0
 					
                 	
                 }
-                else if (document.Show.MouseX.value <= ((getWidth()/4)))
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*2)) //orange to yellow
                 {
                 	
                
@@ -136,13 +136,50 @@
 					
                 	
                 }
-                else if (document.Show.MouseX.value <= ((getWidth()/8)*3))
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*3)) //yellow to green
                 {
-                	g = 100
-                	r = 67
-                	//g =(((document.Show.MouseX.value / widthSegment))%1.0) * 255
-                	b = 120
+                	g = 255
+                	r = 255 - (Math.round((((document.Show.MouseX.value -((getWidth()/8)*2)))/ (getWidth()/8)) * 255))
+                	
+                	b = 0
                 }
+                
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*4)) //green to blue
+                {
+                	g = 255 - (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                	r = 0
+                	
+                	b = (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*5)) //blue to indigo
+                {
+                	g = Math.round((document.Show.MouseX.value%((getWidth()/8))/ (getWidth()/8)) * 128)
+                	
+                	r = 0
+                	
+                	b = 255
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*6))//indigo to violet
+                {
+                	g = 128 - Math.round((document.Show.MouseX.value%((getWidth()/8))/ (getWidth()/8)) * 128)
+                	
+                	r = Math.round((document.Show.MouseX.value%((getWidth()/8))/ (getWidth()/8)) * 128)
+                	
+                	b = 255
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*7)) //indigo to black
+                {
+                	b = 255 - (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                	g = 0
+                	r = 128 - Math.round((document.Show.MouseX.value%((getWidth()/8))/ (getWidth()/8)) * 128)
+                }
+                else //black to white
+                {
+                	r = (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                	g =(Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                	b = (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
+                }
+                
                            
 
 		document.body.style.backgroundColor = ("rgb(" + r  + "," + g + "," + b + ")");
