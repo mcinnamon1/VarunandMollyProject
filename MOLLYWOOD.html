@@ -19,16 +19,22 @@
 		<script>
 		 	var IE = document.all?true:false
 		 
+		 	/*
 		
 			var baseColors = new Array();
+			
 			//red:
 			baseColors[0] = new Color(255, 0, 0);
+			
 			//orange:
 			baseColors[1] = new Color(255, 128, 0);
+			
 			//yellow:
 			baseColors[2] = new Color(255, 255, 0);
+			
 			//green:
 			baseColors[3] = new Color(0, 255, 0);
+			
 			//blue:
 			baseColors[4] = new Color(0, 0, 255);
 			//indigo:
@@ -36,7 +42,7 @@
 			//violet:
 			baseColors[6] = new Color(128, 0, 255);
 			
-			
+			*/
 			
 			
             var pageWidth = document.width;
@@ -45,25 +51,25 @@
   			//create array of values on page corresponding to colors
   			
   			
-  			var widthSegment = pageWidth/7;
+  			var widthSegment = getWidth()/8;
   			var xAxisColors = new Array();
-  			xAxisColors[0] = widthSegment*7;
-  			xAxisColors[1] = widthSegment*6;
-  			xAxisColors[2] = widthSegment*5;
+  			xAxisColors[0] = widthSegment;
+  			xAxisColors[1] = widthSegment*2;
+  			xAxisColors[2] = widthSegment*3;
   			xAxisColors[3] = widthSegment*4;
-  			xAxisColors[4] = widthSegment*3;
-  			xAxisColors[5] = widthSegment*2;
-  			xAxisColors[6] = widthSegment;
+  			xAxisColors[4] = widthSegment*5;
+  			xAxisColors[5] = widthSegment*6;
+  			xAxisColors[6] = widthSegment*7;
   			
-  			var heightSegment = pageHeight/7;
+  			var heightSegment = GetHeight/8;
   			var yAxisColors = new Array();
-  			yAxisColors[0] = heightSegment*7;
-  			yAxisColors[1] = heightSegment*6;
-  			yAxisColors[2] = heightSegment*5;
+  			yAxisColors[0] = heightSegment;
+  			yAxisColors[1] = heightSegment*2;
+  			yAxisColors[2] = heightSegment*3;
   			yAxisColors[3] = heightSegment*4;
-  			yAxisColors[4] = heightSegment*3;
-  			yAxisColors[5] = heightSegment*2;
-  			yAxisColors[6] = heightSegment;
+  			yAxisColors[4] = heightSegment*5;
+  			yAxisColors[5] = heightSegment*6;
+  			yAxisColors[6] = heightSegment*7;
   			
 
 
@@ -80,66 +86,9 @@
 
 			
 
-
-        function changeColor(e)
-        {
-        	if (IE) 
-        	{ 
-
-                tempX = event.clientX + document.body.scrollLeft 
-                tempY = event.clientY + document.body.scrollTop
-                } 
-                else 
-                {  
-                 tempX = e.pageX				      
-                 tempY = e.pageY
-            }  
-        	
-        	//var tempRoll = tempX/1400;
-        	//var tempRollY = tempY/800;
-        	
-        	//$("body").css("background", "rgb(" + tempRoll + ", " + tempRollY + ", " + tempRoll + ")");
-        	
-        } 
         
-        function Color(r, g, b)
-        	{
-        		this.Red = r;
-        		this.Green = g;
-        		this.Blue = b;
-        		
-        	
-        	}
-        	
-        	/*
-        	function averageColorUnit(Color color1, Color color2)
-        		{
-        			var newRed = ((color1.Red + color2.Red)/2);
-        			var newGreen = ((color1.Green + color2.Green)/2);
-        			var newBlue = ((color1.Blue + color2.Blue)/2);
-        			var newColor = Color(newRed, newGreen, newBlue);        		
-        			return newColor;
-        		}
-        		
-        	*/
-
-
         
-        /*
-        function ShowWidth()
-			{
-				tempWidth = document.body.offsetWidth
-				tempHeight = document.body.offsetHeight
-				
-				
-				document.Show.Width.value = tempWidth
-				document.Show.Height.value = tempHeight
-				
-				
-				return true
-			}
-			*/
-
+        
 			
             function getMouseXY(e) 
             {
@@ -157,29 +106,47 @@
 
                 document.Show.MouseX.value = tempX
                 document.Show.MouseY.value = tempY
-                var xRedChange = 1;
-                var yRedChange = 1;
-                var xGreenChange = 1;
-                var yGreenChange = 1;
-                var xBlueChange = 1;
-                var yBlueChange = 1;
-                             
-                if (document.Show.MouseX.value <= xAxisColors[0] && document.Show.MouseX.value > xAxisColors[1])
+                
+                var r, g, b;
+                
+                
+                var distPart = (((document.Show.MouseX.value / (getWidth()/8)))) * 255
+                
+                   
+                if (document.Show.MouseX.value <= (getWidth()/8))
                 {
-                	if (widthSegment%255 == 0)
-                	{
-                		xGreenChange = widthSegment/255;
-                	}
-                	else
-                	{
-                		xGreenChange = 255/widthSegment;
-                	}
-                	xRedChange = 255;
-                	xBlueChange = 1;
+                	
+                	g = Math.round((document.Show.MouseX.value / (getWidth()/8)) * 128)
+                	
+                	
+                	//(((document.Show.MouseX.value / (getWidth()/8)))%1.0) * 255;
+                	r = 255
+					
+					b = 0
+					
                 	
                 }
+                else if (document.Show.MouseX.value <= ((getWidth()/4)))
+                {
+                	
+               
+                	r = 255
+					g = 127+Math.round((((document.Show.MouseX.value-(getWidth()/8)) / (getWidth()/8)) * 128))
+					b = 0
+					
+                	
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*3))
+                {
+                	g = 100
+                	r = 67
+                	//g =(((document.Show.MouseX.value / widthSegment))%1.0) * 255
+                	b = 120
+                }
                            
-				document.body.style.backgroundColor = ("rgb(" + ((document.Show.MouseX.value+1)* xRedChange)  + "," + ((document.Show.MouseX.value+1)* xGreenChange) + "," + (document.Show.MouseX.value * xBlueChange) + ")");
+
+		document.body.style.backgroundColor = ("rgb(" + r  + "," + g + "," + b + ")");
+		
  
  //document.body.style.backgroundColor = "rgb(0,222,250)";
 

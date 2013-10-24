@@ -1,0 +1,212 @@
+
+
+<html>
+<head>
+<title> Dat body MCinn </title>
+
+
+
+<form name="Show">
+            <input type="text" name="MouseX" value="0" size="4"> X<br>
+            <input type="text" name="MouseY" value="0" size="4"> Y<br>
+            <input type = "text" name = "Width" value = "0" size = "5"> PageWidth <br>
+            <input type = "text" name = "Height" value = "0" size = "5"> PageHeight <br>
+</form>
+
+<!--<script type = "text/javascript"
+		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
+		
+		<script>
+		 	var IE = document.all?true:false
+		 
+		 	/*
+		
+			var baseColors = new Array();
+			
+			//red:
+			baseColors[0] = new Color(255, 0, 0);
+			
+			//orange:
+			baseColors[1] = new Color(255, 128, 0);
+			
+			//yellow:
+			baseColors[2] = new Color(255, 255, 0);
+			
+			//green:
+			baseColors[3] = new Color(0, 255, 0);
+			
+			//blue:
+			baseColors[4] = new Color(0, 0, 255);
+			//indigo:
+			baseColors[5] = new Color(0, 128, 255);
+			//violet:
+			baseColors[6] = new Color(128, 0, 255);
+			
+			*/
+			
+			
+            var pageWidth = document.width;
+  			var pageHeight = document.height;
+  			
+  			//create array of values on page corresponding to colors
+  			
+  			
+  			var widthSegment = getWidth()/8;
+  			var xAxisColors = new Array();
+  			xAxisColors[0] = widthSegment;
+  			xAxisColors[1] = widthSegment*2;
+  			xAxisColors[2] = widthSegment*3;
+  			xAxisColors[3] = widthSegment*4;
+  			xAxisColors[4] = widthSegment*5;
+  			xAxisColors[5] = widthSegment*6;
+  			xAxisColors[6] = widthSegment*7;
+  			
+  			var heightSegment = GetHeight/8;
+  			var yAxisColors = new Array();
+  			yAxisColors[0] = heightSegment;
+  			yAxisColors[1] = heightSegment*2;
+  			yAxisColors[2] = heightSegment*3;
+  			yAxisColors[3] = heightSegment*4;
+  			yAxisColors[4] = heightSegment*5;
+  			yAxisColors[5] = heightSegment*6;
+  			yAxisColors[6] = heightSegment*7;
+  			
+
+
+            document.captureEvents(Event.MOUSEMOVE)
+			document.onmousemove = getMouseXY;
+
+		
+			
+
+            var tempX = 0
+            var tempY = 0
+
+
+
+			
+
+        
+        
+        
+			
+            function getMouseXY(e) 
+            {
+                if (IE) { 
+
+                tempX = event.clientX + document.body.scrollLeft 
+                tempY = event.clientY + document.body.scrollTop
+                } 
+                else 
+                {  
+                 tempX = e.pageX      
+                 tempY = e.pageY
+                }  
+
+
+                document.Show.MouseX.value = tempX
+                document.Show.MouseY.value = tempY
+                
+                var r, g, b;
+                
+                
+                var distPart = (((document.Show.MouseX.value / (getWidth()/8)))) * 255
+                
+                   
+                if (document.Show.MouseX.value <= (getWidth()/8))
+                {
+                	
+                	g = Math.round((document.Show.MouseX.value / (getWidth()/8)) * 128)
+                	
+                	
+                	//(((document.Show.MouseX.value / (getWidth()/8)))%1.0) * 255;
+                	r = 255
+					
+					b = 0
+					
+                	
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*2))
+                {
+                	
+               
+                	r = 255
+					g = 127+Math.round((((document.Show.MouseX.value-(getWidth()/8)) / (getWidth()/8)) * 128))
+					b = 0
+					
+                	
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/8)*3))
+                {
+                	g = 255
+                	r = 255 -(Math.round((document.Show.MouseX.value / (getWidth()/8)) * 255))
+                	
+                	b = 0
+                }
+                           
+
+		document.body.style.backgroundColor = ("rgb(" + r  + "," + g + "," + b + ")");
+		
+ 
+ //document.body.style.backgroundColor = "rgb(0,222,250)";
+
+                return true
+        }
+       
+       
+        function GetHeight()
+  {
+          var y = 0;
+          if (self.innerHeight)
+          {
+                  y = self.innerHeight;
+          }
+          else if (document.documentElement && document.documentElement.clientHeight)
+          {
+                  y = document.documentElement.clientHeight;
+          }
+          else if (document.body)
+          {
+                  y = document.body.clientHeight;
+          }
+          
+          
+          
+          return y;
+  }
+       
+        function getWidth() 
+        {
+       
+    if (self.innerWidth) 
+    {
+        return self.innerWidth;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientHeight)
+    {
+        return document.documentElement.clientWidth;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientWidth;
+    }
+   
+   
+   
+    return -1;
+}
+
+
+
+</script>
+</head>
+
+<body>
+
+
+</body>
+
+
+</html>
