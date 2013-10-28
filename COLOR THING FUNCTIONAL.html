@@ -86,9 +86,7 @@
 
 			
 
-        
-        
-        
+       
 			
             function getMouseXY(e) 
             {
@@ -180,15 +178,92 @@
                 	b = (Math.round((((document.Show.MouseX.value%((getWidth()/8))))/ (getWidth()/8)) * 255))
                 }
                 
+                
+                var r2, g2, b2;
+                
+                
+                var distPart = (((document.Show.MouseX.value / (getHeight()/8)))) * 255
+                
+                   
+                if (document.Show.MouseY.value <= (getHeight()/8*7)) //red to orange
+                {
+                	
+                	g2 = Math.round((document.Show.MouseY.value / (getHeight()/8)) * 128)
+                	
+                	
+                	
+                	r2 = 255
+					
+					b2 = 0
+					
+                	
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/8)*6)) //orange to yellow
+                {
+                	
+               
+                	r2 = 255
+					g2 = 127+Math.round((((document.Show.MouseY.value-(getHeight()/8)) / (getHeight()/8)) * 128))
+					b2 = 0
+					
+                	
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/8)*5)) //yellow to green
+                {
+                	g2 = 255
+                	r2 = 255 - (Math.round((((document.Show.MouseY.value -((getHeight()/8)*2)))/ (getHeight()/8)) * 255))
+                	
+                	b2 = 0
+                }
+                
+                else if (document.Show.MouseY.value <= ((getHeight()/8)*4)) //green to blue
+                {
+                	g2 = 255 - (Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                	r2 = 0
+                	
+                	b2 = (Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/8)*3)) //blue to indigo
+                {
+                	g2 = Math.round((document.Show.MouseY.value%((getHeight()/8))/ (getHeight()/8)) * 128)
+                	
+                	r2 = 0
+                	
+                	b2 = 255
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/8)*2))//indigo to violet
+                {
+                	g2 = 128 - Math.round((document.Show.MouseY.value%((getHeight()/8))/ (getHeight()/8)) * 128)
+                	
+                	r2 = Math.round((document.Show.MouseY.value%((getHeight()/8))/ (getHeight()/8)) * 128)
+                	
+                	b2 = 255
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/8))) //indigo to black
+                {
+                	b2 = 255 - (Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                	g2 = 0
+                	r2 = 128 - Math.round((document.Show.MouseY.value%((getHeight()/8))/ (getHeight()/8)) * 128)
+                }
+                else //black to white
+                {
+                	r2 = (Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                	g2 =(Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                	b2 = (Math.round((((document.Show.MouseY.value%((getHeight()/8))))/ (getHeight()/8)) * 255))
+                }
+                
+                
                            
 
-		document.body.style.backgroundColor = ("rgb(" + r  + "," + g + "," + b + ")");
+		document.body.style.backgroundColor = ("rgb(" + (r2+r)/2  + "," + (g2+g)/2 + "," + (b2 + b)/2 + ")");
 		
  
  //document.body.style.backgroundColor = "rgb(0,222,250)";
 
                 return true
         }
+        
+        
        
        
         function GetHeight()
@@ -233,6 +308,24 @@
    
    
     return -1;
+}
+
+function getHeight()
+{
+if (self.innerHeight) 
+    {
+        return self.innerHeight;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientWidth)
+    {
+        return document.documentElement.clientHeight;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientHeight;
+    }
 }
 
 
