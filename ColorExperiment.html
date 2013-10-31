@@ -4,14 +4,67 @@
 <head>
 <title> Dat body MCinn </title>
 
+<script>
+
+function getHeight()
+  {
+          var y = 0;
+          if (self.innerHeight)
+          {
+                  y = self.innerHeight;
+          }
+          else if (document.documentElement && document.documentElement.clientHeight)
+          {
+                  y = document.documentElement.clientHeight;
+          }
+          else if (document.body)
+          {
+                  y = document.body.clientHeight;
+          }
+          
+          
+          
+          return y;
+  }
+       
+        function getWidth() 
+        {
+       
+    if (self.innerWidth) 
+    {
+        return self.innerWidth;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientHeight)
+    {
+        return document.documentElement.clientWidth;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientWidth;
+    }
+
+    return -1;
+}
+
+var width = getWidth()
+var height = getHeight()
+
+</script>
+
+<img src="xaxis.png" id="yourImgId" alt="alt tags are key!"/>
+<!-- <img src="xaxis.png" alt="X Axis" width="this.getWidth()" height="40"> -->
 
 
 <form name="Show">
+
             <input type="text" name="MouseX" value="0" size="4"> X <br>
             <input type="text" name="MouseY" value="0" size="4"> Y <br>
-            <input type = "text" name = "document.body.style.backgroundColor" value = "0" size = "5"> R value <br>
-            <input type = "text" name = "getHeight()" value = "0" size = "5"> PageHeight <br>
+           
 </form>
+
+
 
 <!--<script type = "text/javascript"
 		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
@@ -43,11 +96,15 @@
 			baseColors[6] = new Color(128, 0, 255);
 			
 			*/
+			var height = getHeight()
+			var width = getWidth()
 			
 			
-            var pageWidth = document.width;
-  			var pageHeight = document.height;
-  			
+            var yourImg = document.getElementById('yourImgId');
+			if(yourImg && yourImg.style) {
+    			yourImg.style.height = 40;
+    			yourImg.style.width = width;
+			}  			
   			//create array of values on page corresponding to colors
   			
   			
@@ -75,6 +132,8 @@
 
             document.captureEvents(Event.MOUSEMOVE)
 			document.onmousemove = getMouseXY;
+			
+			
 
 		
 			
