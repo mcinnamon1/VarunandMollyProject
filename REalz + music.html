@@ -1,0 +1,358 @@
+
+
+<html>
+<head>
+<title> Dat body MCinn </title>
+
+
+
+<form name="Show">
+            <input type="text" name="MouseX" value="0" size="4"> X <br>
+            <input type="text" name="MouseY" value="0" size="4"> Y <br>
+            <input type = "text" name = "document.body.style.backgroundColor" value = "0" size = "5"> R value <br>
+            <input type = "text" name = "getHeight()" value = "0" size = "5"> PageHeight <br>
+</form>
+
+<!--<script type = "text/javascript"
+		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
+		
+		<script>
+		 	var IE = document.all?true:false
+		 
+		 	/*
+		
+			var baseColors = new Array();
+			
+			//red:
+			baseColors[0] = new Color(255, 0, 0);
+			
+			//orange:
+			baseColors[1] = new Color(255, 128, 0);
+			
+			//yellow:
+			baseColors[2] = new Color(255, 255, 0);
+			
+			//green:
+			baseColors[3] = new Color(0, 255, 0);
+			
+			//blue:
+			baseColors[4] = new Color(0, 0, 255);
+			//indigo:
+			baseColors[5] = new Color(0, 128, 255);
+			//violet:
+			baseColors[6] = new Color(128, 0, 255);
+			
+			*/
+			
+			
+            var pageWidth = document.width;
+  			var pageHeight = document.height;
+  			
+  			//create array of values on page corresponding to colors
+  			
+  			
+  			var widthSegment = getWidth()/8;
+  			var xAxisColors = new Array();
+  			xAxisColors[0] = widthSegment;
+  			xAxisColors[1] = widthSegment*2;
+  			xAxisColors[2] = widthSegment*3;
+  			xAxisColors[3] = widthSegment*4;
+  			xAxisColors[4] = widthSegment*5;
+  			xAxisColors[5] = widthSegment*6;
+  			xAxisColors[6] = widthSegment*7;
+  			
+  			var heightSegment = getHeight()/8;
+  			var yAxisColors = new Array();
+  			yAxisColors[0] = heightSegment;
+  			yAxisColors[1] = heightSegment*2;
+  			yAxisColors[2] = heightSegment*3;
+  			yAxisColors[3] = heightSegment*4;
+  			yAxisColors[4] = heightSegment*5;
+  			yAxisColors[5] = heightSegment*6;
+  			yAxisColors[6] = heightSegment*7;
+  			
+
+
+            document.captureEvents(Event.MOUSEMOVE)
+			document.onmousemove = getMouseXY;
+
+		
+			
+
+            var tempX = 0
+            var tempY = 0
+
+
+
+			
+
+       
+			
+            function getMouseXY(e) 
+            {
+                if (IE) { 
+
+                tempX = event.clientX + document.body.scrollLeft 
+                tempY = event.clientY + document.body.scrollTop
+                } 
+                else 
+                {  
+                 tempX = e.pageX      
+                 tempY = e.pageY
+                }  
+
+
+                document.Show.MouseX.value = tempX
+                document.Show.MouseY.value = tempY
+                
+                
+                
+                var r, g, b;
+                
+                
+                
+                   
+                if (document.Show.MouseX.value <= (getWidth()/7)) //red to orange
+                {
+                	
+                	g = Math.round((document.Show.MouseX.value / (getWidth()/7)) * 128)
+                	
+                	
+                	
+                	r = 255
+					
+					b = 0
+					
+                	
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*2)) //orange to yellow
+                {
+                	
+               
+                	r = 255
+					g = 127+Math.round((((document.Show.MouseX.value-(getWidth()/7)) / (getWidth()/7)) * 128))
+					b = 0
+					
+                	
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*3)) //yellow to green
+                {
+                	g = 255
+                	r = 255 - (Math.round((((document.Show.MouseX.value -((getWidth()/7)*2)))/ (getWidth()/7)) * 255))
+                	
+                	b = 0
+                }
+                
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*4)) //green to blue
+                {
+                	g = 255 - (Math.round((((document.Show.MouseX.value%((getWidth()/7))))/ (getWidth()/7)) * 255))
+                	r = 0
+                	b = (Math.round((((document.Show.MouseX.value%((getWidth()/7))))/ (getWidth()/7)) * 255))
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*5)) //blue to indigo
+                {
+                	g = Math.round((document.Show.MouseX.value%((getWidth()/7))/ (getWidth()/7)) * 128)
+                	
+                	r = 0
+                	
+                	b = 255
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*6))//indigo to violet
+                {
+                	g = 128 - Math.round((document.Show.MouseX.value%((getWidth()/7))/ (getWidth()/7)) * 128)
+                	
+                	r = Math.round((document.Show.MouseX.value%((getWidth()/7))/ (getWidth()/7)) * 128)
+                	
+                	b = 255
+                }
+                else if (document.Show.MouseX.value <= ((getWidth()/7)*7)) //indigo to black
+                {
+                	b = 255 - (Math.round((((document.Show.MouseX.value%((getWidth()/7))))/ (getWidth()/7)) * 255))
+                	g = 0
+                	r = 128 - Math.round((document.Show.MouseX.value%((getWidth()/7))/ (getWidth()/7)) * 128)
+                }
+                
+                
+                
+                var r2, g2, b2;
+                
+                            
+                   
+                if (document.Show.MouseY.value <= (getHeight()/7)) //red to orange
+                {
+                	
+                	g2 = Math.round((document.Show.MouseY.value / (getHeight()/7)) * 128)
+                	
+                	
+                	
+                	r2 = 255
+					
+					b2 = 0
+					
+                	
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*2)) //orange to yellow
+                {
+                	
+               
+                	r2 = 255
+					g2 = 127+Math.round((((document.Show.MouseY.value-(getHeight()/7)) / (getHeight()/7)) * 128))
+					b2 = 0
+					
+                	
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*3)) //yellow to green
+                {
+                	g2 = 255
+                	r2 = 255 - (Math.round((((document.Show.MouseY.value -((getHeight()/7)*2)))/ (getHeight()/7)) * 255))
+                	
+                	b2 = 0
+                }
+                
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*4)) //green to blue
+                {
+                	g2 = 255 - (Math.round((((document.Show.MouseY.value%((getHeight()/7))))/ (getHeight()/7)) * 255))
+                	r2 = 0
+                	
+                	b2 = (Math.round((((document.Show.MouseY.value%((getHeight()/7))))/ (getHeight()/7)) * 255))
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*5)) //blue to indigo
+                {
+                	g2 = Math.round((document.Show.MouseY.value%((getHeight()/7))/ (getHeight()/7)) * 128)
+                	
+                	r2 = 0
+                	
+                	b2 = 255
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*6))//indigo to violet
+                {
+                	g2 = 128 - Math.round((document.Show.MouseY.value%((getHeight()/7))/ (getHeight()/7)) * 128)
+                	
+                	r2 = Math.round((document.Show.MouseY.value%((getHeight()/7))/ (getHeight()/7)) * 128)
+                	
+                	b2 = 255
+                }
+                else if (document.Show.MouseY.value <= ((getHeight()/7)*7)) //indigo to black
+                {
+                	b2 = 255 - (Math.round((((document.Show.MouseY.value%((getHeight()/7))))/ (getHeight()/7)) * 255))
+                	g2 = 0
+                	r2 = 128 - Math.round((document.Show.MouseY.value%((getHeight()/7))/ (getHeight()/7)) * 128)
+                }
+               
+                
+                
+                           
+
+		document.body.style.backgroundColor = ("rgb(" + (Math.round((r+r2)/2.0))  + "," + (Math.round((g+g2)/2.0)) + "," + (Math.round((b+b2)/2.0)) + ")");
+		
+ 
+ //document.body.style.backgroundColor = "rgb(0,222,250)";
+
+                return true
+        }
+        
+        
+       
+       
+        function GetHeight()
+  {
+          var y = 0;
+          if (self.innerHeight)
+          {
+                  y = self.innerHeight;
+          }
+          else if (document.documentElement && document.documentElement.clientHeight)
+          {
+                  y = document.documentElement.clientHeight;
+          }
+          else if (document.body)
+          {
+                  y = document.body.clientHeight;
+          }
+          
+          
+          
+          return y;
+  }
+       
+        function getWidth() 
+        {
+       
+    if (self.innerWidth) 
+    {
+        return self.innerWidth;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientHeight)
+    {
+        return document.documentElement.clientWidth;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientWidth;
+    }
+   
+   
+   
+    return -1;
+}
+
+function getHeight()
+{
+if (self.innerHeight) 
+    {
+        return self.innerHeight;
+    }
+   
+    else if (document.documentElement && document.documentElement.clientWidth)
+    {
+        return document.documentElement.clientHeight;
+    }
+   
+    else if (document.body) 
+    {
+        return document.body.clientHeight;
+    }
+}
+
+
+
+</script>
+
+
+
+<object>
+<param name="autostart" value="true">
+<param name="src" value="Moby.m4a">
+<param name="autoplay" value="true">
+<param name="controller" value="false">
+<embed src="Moby.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+</object>
+
+
+<script>
+
+
+
+
+ myAudio = new Audio('Moby.m4a'); 
+
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+var souce = 
+myAudio.play(); 
+
+</script>
+</head>
+
+<body>
+
+
+</body>
+
+
+</html>

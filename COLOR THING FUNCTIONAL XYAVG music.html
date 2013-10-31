@@ -13,6 +13,8 @@
             <input type = "text" name = "getHeight()" value = "0" size = "5"> PageHeight <br>
 </form>
 
+
+
 <!--<script type = "text/javascript"
 		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
 		
@@ -319,6 +321,32 @@ if (self.innerHeight)
 
 
 </script>
+
+
+
+<object>
+<param name="autostart" value="true">
+<param name="src" value="Moby.m4a">
+<param name="autoplay" value="true">
+<param name="controller" value="false">
+<embed src="Moby.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+</object>
+
+
+<script>
+
+
+myAudio = new Audio('Blerp.m4a'); 
+
+ myAudio = new Audio('blerp.m4a'); 
+
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+var souce = 
+myAudio.play(); 
 </head>
 
 <body>
