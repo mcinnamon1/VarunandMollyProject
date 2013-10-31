@@ -1,0 +1,163 @@
+<html>
+<head>
+<title> Dat body MCinn </title>
+
+
+
+<form name="Show">
+            <input type="text" name="MouseX" value="0" size="4"> X<br>
+            <input type="text" name="MouseY" value="0" size="4"> Y<br>
+            <input type = "text" name = Width" value = "0" size = "5"> PageWidth <br>
+            <input type = "text" name = Height" value = "0" size = "5"> PageHeight <br>
+      </form>
+
+
+        <script type="text/javascript">
+
+            var IE = document.all?true:false
+
+
+            if (!IE) document.captureEvents(Event.MOUSEMOVE)
+document.onmousemove = getMouseXY;
+
+
+ 
+
+            var tempX = 0
+            var tempY = 0
+
+
+
+function ShowWidth()
+{
+tempWidth = document.body.offsetWidth
+tempHeight = document.body.offsetHeight
+ 
+ 
+document.Show.Width.value = tempWidth
+document.Show.Height.value = tempHeight
+ 
+ 
+return true
+}
+
+
+            function getMouseXY(e) 
+            {
+                if (IE) { 
+
+                tempX = event.clientX + document.body.scrollLeft 
+                tempY = event.clientY + document.body.scrollTop
+                } 
+                else 
+                {  
+                 tempX = e.pageX      
+                 tempY = e.pageY
+                }  
+
+
+                document.Show.MouseX.value = tempX
+                document.Show.MouseY.value = tempY
+
+                return true
+            }
+                
+            
+                
+        </script>
+
+
+
+<body onload="mouse_position()">
+<form name="Form1">
+
+
+</form>
+
+
+<object>
+<param name="autostart" value="true">
+<param name="src" value="blerp.m4a">
+<param name="autoplay" value="true">
+<param name="controller" value="false">
+<embed src="blerp.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+</object>
+
+
+<script>
+
+
+myAudio = new Audio('Blerp.m4a'); 
+
+ myAudio = new Audio('blerp.m4a'); 
+
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+var souce = 
+myAudio.play(); 
+// Create the filter
+
+
+
+
+
+/*
+var filter = context.createBiquadFilter();
+// Create the audio graph.
+source.connect(filter);
+filter.connect('blerp.m4a');
+// Create and specify parameters for the low-pass filter.
+filter.type = 0; // Low-pass filter. See BiquadFilterNode docs
+filter.frequency.value = 440; // Set cutoff to 440 HZ
+// Playback the sound.
+source.start(0);
+
+
+var context;
+window.addEventListener('load', init, false);
+function init() {
+  try {
+    // Fix up for prefixing
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;
+    context = new AudioContext();
+  }
+  catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
+}
+
+
+function playSound(buffer) {
+  var source = context.createBufferSource(); // creates a sound source
+  source.buffer = buffer;                    // tell the source which sound to play
+  source.connect('blerp.m4a');       // connect the source to the context's destination (the speakers)
+  source.start(0);                           // play the source now
+                                             // note: on older systems, may have to use deprecated noteOn(time);
+}
+
+playSound();
+
+*/
+
+
+
+
+</script>
+
+</head>
+
+
+<body>
+
+<script type="text/javascript">
+ShowWidth();
+</script>
+
+
+
+</body>
+
+</html>
