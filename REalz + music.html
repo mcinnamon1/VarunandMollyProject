@@ -319,6 +319,34 @@ if (self.innerHeight)
 
 
 </script>
+
+
+
+<object>
+<param name="autostart" value="true">
+<param name="src" value="Moby.m4a">
+<param name="autoplay" value="true">
+<param name="controller" value="false">
+<embed src="Moby.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
+</object>
+
+
+<script>
+
+
+
+
+ myAudio = new Audio('Moby.m4a'); 
+
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+var souce = 
+myAudio.play(); 
+
+</script>
 </head>
 
 <body>
