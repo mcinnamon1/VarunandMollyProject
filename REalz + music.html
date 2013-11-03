@@ -5,17 +5,16 @@
 <title> Dat body MCinn </title>
 
 
+		<img src="xaxis.png" id="yourImgId" alt="alt tags are key!"/>
+		<img src="yaxis.png" id="Yaxis" alt="alt tags are key!"/>
 
 <form name="Show">
             <input type="text" name="MouseX" value="0" size="4"> X <br>
             <input type="text" name="MouseY" value="0" size="4"> Y <br>
-            <input type = "text" name = "document.body.style.backgroundColor" value = "0" size = "5"> R value <br>
-            <input type = "text" name = "getHeight()" value = "0" size = "5"> PageHeight <br>
-</form>
-
+           </form>
 <!--<script type = "text/javascript"
 		src = "ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">$$-->
-		
+
 		<script>
 		 	var IE = document.all?true:false
 		 
@@ -45,8 +44,20 @@
 			*/
 			
 			
-            var pageWidth = document.width;
-  			var pageHeight = document.height;
+           var height = getHeight()
+			var width = getWidth()
+			
+			 var yourImg = document.getElementById('Yaxis');
+			if(yourImg && yourImg.style) {
+    			yourImg.style.height = height - 30;
+    			yourImg.style.width = 40;
+			}  	
+  			
+  			 var yourImg = document.getElementById('yourImgId');
+			if(yourImg && yourImg.style) {
+    			yourImg.style.height = 30;
+    			yourImg.style.width = width;
+			}  			
   			
   			//create array of values on page corresponding to colors
   			
@@ -254,7 +265,7 @@
         
        
        
-        function GetHeight()
+        function getHeight()
   {
           var y = 0;
           if (self.innerHeight)
@@ -320,7 +331,7 @@ if (self.innerHeight)
 
 </script>
 
-
+<!--
 
 <object>
 <param name="autostart" value="true">
@@ -329,7 +340,7 @@ if (self.innerHeight)
 <param name="controller" value="false">
 <embed src="Moby.m4a" controller="false" autoplay="true" autostart="True" type="audio/wav" />
 </object>
-
+-->
 
 <script>
 
